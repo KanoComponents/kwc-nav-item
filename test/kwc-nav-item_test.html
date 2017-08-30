@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>kwc-nav-item test</title>
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../web-component-tester/browser.js"></script>
+
+    <link rel="import" href="../kwc-nav-item.html">
+</head>
+<body>
+    <test-fixture id="empty">
+        <template>
+            <kwc-nav-item></kwc-nav-item>
+        </template>
+    </test-fixture>
+    <test-fixture id="default">
+        <template>
+            <kwc-nav-item label="Nav Item"></kwc-nav-item>
+        </template>
+    </test-fixture>
+    <test-fixture id="icon">
+        <template>
+            <kwc-nav-item label="Nav Item" icon-id="challenges"></kwc-nav-item>
+        </template>
+    </test-fixture>
+    <test-fixture id="active">
+        <template>
+            <kwc-nav-item label="Nav Item" active="true"></kwc-nav-item>
+        </template>
+    </test-fixture>
+    <test-fixture id="icon-and-active">
+        <template>
+            <kwc-nav-item label="Nav Item" icon-id="challenges" active="true"></kwc-nav-item>
+        </template>
+    </test-fixture>
+
+    <script>
+        suite('empty', function() {
+            var element;
+            setup(function () {
+                element = fixture('empty');
+            });
+            test('instantiating the element works', function() {
+                assert.equal(element.is, 'kwc-nav-item');
+            });
+            test('labeled correctly', function() {
+                assert.equal(element.label, null);
+            });
+            test('not active by default', function() {
+                assert.equal(element.active, false);
+                assert.equal(element._activeClass, 'deselected');
+            });
+            test('without icon by default', function() {
+                assert.equal(element.iconId, null);
+                assert.equal(element._hasIcon, false);
+            });
+        });
+        suite('default', function() {
+            var element;
+            setup(function () {
+                element = fixture('default');
+            });
+            test('instantiating the element works', function() {
+                assert.equal(element.is, 'kwc-nav-item');
+            });
+            test('labeled correctly', function() {
+                assert.equal(element.label, 'Nav Item');
+            });
+            test('not active by default', function() {
+                assert.equal(element.active, false);
+                assert.equal(element._activeClass, 'deselected');
+            });
+            test('without icon by default', function() {
+                assert.equal(element.iconId, null);
+                assert.equal(element._hasIcon, false);
+            });
+        });
+        suite('icon', function() {
+            var element;
+            setup(function () {
+                element = fixture('icon');
+            });
+            test('instantiating the element works', function() {
+                assert.equal(element.is, 'kwc-nav-item');
+            });
+            test('labeled correctly', function() {
+                assert.equal(element.label, 'Nav Item');
+            });
+            test('not active by default', function() {
+                assert.equal(element.active, false);
+                assert.equal(element._activeClass, 'deselected');
+            });
+            test('with icon', function() {
+                assert.equal(element.iconId, 'challenges');
+                assert.equal(element._hasIcon, true);
+            });
+        });
+        suite('active', function() {
+            var element;
+            setup(function () {
+                element = fixture('active');
+            });
+            test('instantiating the element works', function() {
+                assert.equal(element.is, 'kwc-nav-item');
+            });
+            test('labeled correctly', function() {
+                assert.equal(element.label, 'Nav Item');
+            });
+            test('active item', function() {
+                assert.equal(element.active, true);
+                assert.equal(element._activeClass, 'selected');
+            });
+            test('without icon by default', function() {
+                assert.equal(element.iconId, undefined);
+                assert.equal(element._hasIcon, false);
+            });
+        });
+        suite('icon and active', function() {
+            var element;
+            setup(function () {
+                element = fixture('icon-and-active');
+            });
+            test('instantiating the element works', function() {
+                assert.equal(element.is, 'kwc-nav-item');
+            });
+            test('labeled correctly', function() {
+                assert.equal(element.label, 'Nav Item');
+            });
+            test('active item', function() {
+                assert.equal(element.active, true);
+                assert.equal(element._activeClass, 'selected');
+            });
+            test('with icon', function() {
+                assert.equal(element.iconId, 'challenges');
+                assert.equal(element._hasIcon, true);
+            });
+        });
+    </script>
+</body>
+</html>
