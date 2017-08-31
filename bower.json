@@ -3,7 +3,7 @@
   "description": "Display a tab item in the `kwc-nav`",
   "main": "kwc-nav-item.html",
   "dependencies": {
-    "polymer": "Polymer/polymer#^1.4.0",
+    "polymer": "Polymer/polymer#^1.9.0",
     "web-components": "git@github.com:KanoComputing/web-components.git#master",
     "iron-icon": "polymerelements/iron-icon#^1.0.0"
   },
