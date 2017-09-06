@@ -2,6 +2,11 @@
 
 Display a tab item in the `kwc-nav`
 
+## Installation
+
+Clone this repository.
+Run `bower i`
+
 ## Install the Polymer-CLI
 
 First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polymer-cli) installed. Then run `polymer serve` to serve your application locally.
