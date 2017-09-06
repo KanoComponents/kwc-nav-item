@@ -39,104 +39,149 @@
     </test-fixture>
 
     <script>
-        suite('empty', function() {
-            var element;
+        suite('empty', () => {
+            let element;
             setup(function () {
                 element = fixture('empty');
             });
-            test('instantiating the element works', function() {
+            test('instantiating the element works', () => {
                 assert.equal(element.is, 'kwc-nav-item');
             });
-            test('labeled correctly', function() {
+            test('labeled correctly', () => {
                 assert.equal(element.label, null);
             });
-            test('not active by default', function() {
+            test('not active by default', () => {
                 assert.equal(element.active, false);
                 assert.equal(element._activeClass, 'deselected');
+                let navItem = Polymer.dom(element.root).querySelector('.nav-item');
+                assert.exists(navItem);
+                assert.isOk(navItem.classList.contains('deselected'));
+                assert.isNotOk(navItem.classList.contains('selected'));
             });
-            test('without icon by default', function() {
+            test('without icon by default', (done) => {
                 assert.equal(element.iconId, null);
                 assert.equal(element._hasIcon, false);
+                flush(() => {
+                  let navItem = Polymer.dom(element.root).querySelector('.icon');
+                  assert.notExists(navItem);
+                  done();
+                });
             });
         });
-        suite('default', function() {
-            var element;
+        suite('default', () => {
+            let element;
             setup(function () {
                 element = fixture('default');
             });
-            test('instantiating the element works', function() {
+            test('instantiating the element works', () => {
                 assert.equal(element.is, 'kwc-nav-item');
             });
-            test('labeled correctly', function() {
+            test('labeled correctly', () => {
                 assert.equal(element.label, 'Nav Item');
             });
-            test('not active by default', function() {
+            test('not active by default', () => {
                 assert.equal(element.active, false);
                 assert.equal(element._activeClass, 'deselected');
+                let navItem = Polymer.dom(element.root).querySelector('.nav-item');
+                assert.exists(navItem);
+                assert.isOk(navItem.classList.contains('deselected'));
+                assert.isNotOk(navItem.classList.contains('selected'));
             });
-            test('without icon by default', function() {
+            test('without icon by default', (done) => {
                 assert.equal(element.iconId, null);
                 assert.equal(element._hasIcon, false);
+                flush(() => {
+                  let navItem = Polymer.dom(element.root).querySelector('.icon');
+                  assert.notExists(navItem);
+                  done();
+                });
             });
         });
-        suite('icon', function() {
-            var element;
+        suite('icon', () => {
+            let element;
             setup(function () {
                 element = fixture('icon');
             });
-            test('instantiating the element works', function() {
+            test('instantiating the element works', () => {
                 assert.equal(element.is, 'kwc-nav-item');
             });
-            test('labeled correctly', function() {
+            test('labeled correctly', () => {
                 assert.equal(element.label, 'Nav Item');
             });
-            test('not active by default', function() {
+            test('not active by default', () => {
                 assert.equal(element.active, false);
                 assert.equal(element._activeClass, 'deselected');
+                let navItem = Polymer.dom(element.root).querySelector('.nav-item');
+                assert.exists(navItem);
+                assert.isOk(navItem.classList.contains('deselected'));
+                assert.isNotOk(navItem.classList.contains('selected'));
             });
-            test('with icon', function() {
+            test('with icon', (done) => {
                 assert.equal(element.iconId, 'challenges');
                 assert.equal(element._hasIcon, true);
+                flush(() => {
+                  let navItem = Polymer.dom(element.root).querySelector('.icon');
+                  assert.exists(navItem);
+                  done();
+                });
             });
         });
-        suite('active', function() {
-            var element;
+        suite('active', () => {
+            let element;
             setup(function () {
                 element = fixture('active');
             });
-            test('instantiating the element works', function() {
+            test('instantiating the element works', () => {
                 assert.equal(element.is, 'kwc-nav-item');
             });
-            test('labeled correctly', function() {
+            test('labeled correctly', () => {
                 assert.equal(element.label, 'Nav Item');
             });
-            test('active item', function() {
+            test('active item', () => {
                 assert.equal(element.active, true);
                 assert.equal(element._activeClass, 'selected');
+                let navItem = Polymer.dom(element.root).querySelector('.nav-item');
+                assert.exists(navItem);
+                assert.isOk(navItem.classList.contains('selected'));
+                assert.isNotOk(navItem.classList.contains('deselected'));
             });
-            test('without icon by default', function() {
+            test('without icon by default', (done) => {
                 assert.equal(element.iconId, undefined);
                 assert.equal(element._hasIcon, false);
+                flush(() => {
+                  let navItem = Polymer.dom(element.root).querySelector('.icon');
+                  assert.notExists(navItem);
+                  done();
+                });
             });
         });
-        suite('icon and active', function() {
-            var element;
+        suite('icon and active', () => {
+            let element;
             setup(function () {
                 element = fixture('icon-and-active');
             });
-            test('instantiating the element works', function() {
+            test('instantiating the element works', () => {
                 assert.equal(element.is, 'kwc-nav-item');
             });
-            test('labeled correctly', function() {
+            test('labeled correctly', () => {
                 assert.equal(element.label, 'Nav Item');
             });
-            test('active item', function() {
+            test('active item', () => {
                 assert.equal(element.active, true);
                 assert.equal(element._activeClass, 'selected');
+                let navItem = Polymer.dom(element.root).querySelector('.nav-item');
+                assert.exists(navItem);
+                assert.isOk(navItem.classList.contains('selected'));
+                assert.isNotOk(navItem.classList.contains('deselected'));
             });
-            test('with icon', function() {
+            test('with icon', (done) => {
                 assert.equal(element.iconId, 'challenges');
                 assert.equal(element._hasIcon, true);
+                flush(() => {
+                  let navItem = Polymer.dom(element.root).querySelector('.icon');
+                  assert.exists(navItem);
+                  done();
+                });
             });
         });
     </script>
