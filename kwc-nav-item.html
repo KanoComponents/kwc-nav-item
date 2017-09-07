@@ -147,30 +147,36 @@ Display a tab item in the `kwc-nav`
                 }
             },
             /**
-            * Computes if navigation item has an icon or not.
-            * @param {String} iconId Icon id from `kano-icons`.
-            */
+             * Computes if navigation item has an icon or not.
+             * @param {String} iconId Icon id from `kano-icons`.
+             * @return {Boolean} Flag if navigation icon has icon or not.
+             */
             _computeHasIcon (iconId) {
                 return iconId ? true : false;
             },
             /**
-            * Computes class to use if navigation item is active or not.
-            * @param {String} active Wether navigation is active or not.
-            */
+             * Computes class to use if navigation item is active or not.
+             * @param {String} active Wether navigation is active or not.
+             * @return {String} Class to be used if navigation icon is selected
+             *     or not.
+             */
             _computeActiveClass (active) {
                 return active === true ? 'selected' : 'deselected';
             },
             /**
-            * Computes class to add an outline to navigation item.
-            * @param {String} outline Wether has outline or not or not.
-            */
+             * Computes class to add an outline to navigation item.
+             * @param {String} outline Wether has outline or not or not.
+             * @return {String} Class to be used if navigation icon is outlined
+             *     or not.
+             */
             _computeOutlineClass (outline) {
                 return outline === true ? 'outline' : '';
             },
             /**
-            * Computes class to apply color scheme.
-            * @param {String} colorScheme What color scheme to apply.
-            */
+             * Computes class to apply color scheme.
+             * @param {String} colorScheme What color scheme to apply.
+             * @return {String} Class to be used to set color scheme.
+             */
             _computeColorSchemeClass (colorScheme) {
                 let scheme = 'light';
                 switch (colorScheme) {
