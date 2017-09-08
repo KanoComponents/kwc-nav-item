@@ -16,7 +16,7 @@ Display a tab item in the `kwc-nav`
             :host {
                 display: inline-block;
             }
-            :host .nav-item {
+            .nav-item {
                 @apply --font-body;
                 margin: 0 16px;
                 padding: 8px 16px;
@@ -31,50 +31,49 @@ Display a tab item in the `kwc-nav`
                 cursor: pointer;
                 background: transparent;
             }
-            :host .nav-item:focus {
+            .nav-item:focus {
                 outline: 0;
             }
-            :host .nav-item .icon {
+            .nav-item .icon {
                 width: 16px;
                 height: 16px;
                 margin-right: 8px;
             }
 
-            :host .nav-item.light.deselected {
+            .nav-item.light.deselected {
                 color: var(--color-grey);
             }
-            :host .nav-item.light.deselected:hover {
+            .nav-item.light.deselected:hover {
                 color: var(--color-stone);
             }
-            :host .nav-item.light.selected {
+            .nav-item.light.selected {
                 color: var(--color-black);
             }
-            :host .nav-item.light.selected .icon {
+            .nav-item.light.selected .icon {
                 color: var(--color-kano-orange);
             }
-            :host .nav-item.light.outline {
+            .nav-item.light.outline {
                 border: solid 1px var(--color-grey);
             }
-            :host .nav-item.light.outline.selected {
+            .nav-item.light.outline.selected {
                 border: solid 1px var(--color-kano-orange);
             }
-
-            :host .nav-item.dark.deselected {
+            .nav-item.dark.deselected {
                 color: var(--color-grey);
             }
-            :host .nav-item.dark.deselected:hover {
+            .nav-item.dark.deselected:hover {
                 color: var(--color-stone);
             }
-            :host .nav-item.dark.selected {
+            .nav-item.dark.selected {
                 color: var(--color-white);
             }
-            :host .nav-item.dark.selected .icon {
+            .nav-item.dark.selected .icon {
                 color: var(--color-kano-orange);
             }
-            :host .nav-item.dark.outline {
+            .nav-item.dark.outline {
                 border: solid 1px var(--color-grey);
             }
-            :host .nav-item.dark.outline.selected {
+            .nav-item.dark.outline.selected {
                 border: solid 1px var(--color-kano-orange);
             }
         </style>
