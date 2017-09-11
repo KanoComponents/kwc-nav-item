@@ -19,7 +19,7 @@
     </test-fixture>
     <test-fixture id="default">
         <template>
-            <kwc-nav-item>[[label]]</kwc-nav-item>
+            <kwc-nav-item>Nav Item</kwc-nav-item>
         </template>
     </test-fixture>
     <test-fixture id="icon">
@@ -39,7 +39,6 @@
     </test-fixture>
 
     <script>
-        var defaultLabel = 'Nav Item';
         suite('empty', () => {
             let element;
             setup(function () {
@@ -149,7 +148,6 @@
                 assert.equal(element.is, 'kwc-nav-item');
             });
             test('active item', () => {
-                // assert.equal(element.active, true);
                 assert.equal(element._activeClass, 'selected');
                 let navItem = Polymer.dom(element.root).querySelector('.nav-item');
                 assert.exists(navItem);
