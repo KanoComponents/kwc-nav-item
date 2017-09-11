@@ -18,71 +18,12 @@
 <body>
 
     <div class="vertical-section-container centered">
-        <h2>Light Color scheme</h2>
-
-        <h3>Without icon and inactive</h3>
-        <demo-snippet>
-            <template>
-                <kwc-nav-item label="Nav Item"></kwc-nav-item>
-            </template>
-        </demo-snippet>
-
-        <h3>With icon and inactive</h3>
-        <demo-snippet>
-            <template>
-                <kwc-nav-item label="Nav Item" icon-id="challenges"></kwc-nav-item>
-            </template>
-        </demo-snippet>
-
-        <h3>Without icon and active</h3>
-        <demo-snippet>
-            <template>
-                <kwc-nav-item label="Nav Item" active="true"></kwc-nav-item>
-            </template>
-        </demo-snippet>
-
-        <h3>With icon and active</h3>
-        <demo-snippet>
-            <template>
-                <kwc-nav-item label="Nav Item" icon-id="challenges" active="true"></kwc-nav-item>
-            </template>
-        </demo-snippet>
-
-        <h3>Without icon inactive and outline</h3>
-        <demo-snippet>
-            <template>
-                <kwc-nav-item outline label="Nav Item"></kwc-nav-item>
-            </template>
-        </demo-snippet>
-
-        <h3>With icon inactive and outline</h3>
-        <demo-snippet>
-            <template>
-                <kwc-nav-item outline label="Nav Item" icon-id="challenges"></kwc-nav-item>
-            </template>
-        </demo-snippet>
-
-        <h3>Without icon active and outline</h3>
-        <demo-snippet>
-            <template>
-                <kwc-nav-item outline label="Nav Item" active="true"></kwc-nav-item>
-            </template>
-        </demo-snippet>
-
-        <h3>With icon active and outline</h3>
-        <demo-snippet>
-            <template>
-                <kwc-nav-item outline label="Nav Item" icon-id="challenges" active="true"></kwc-nav-item>
-            </template>
-        </demo-snippet>
-
-        <h2>Dark Color scheme</h2>
 
         <h3>Without icon and inactive</h3>
         <demo-snippet>
             <template>
                 <div style="background: #394148;">
-                    <kwc-nav-item color-scheme="dark" label="Nav Item"></kwc-nav-item>
+                    <kwc-nav-item>Nav Item</kwc-nav-item>
                 </div>
             </template>
         </demo-snippet>
@@ -91,7 +32,7 @@
         <demo-snippet>
             <template>
                 <div style="background: #394148;">
-                    <kwc-nav-item color-scheme="dark" label="Nav Item" icon-id="challenges"></kwc-nav-item>
+                    <kwc-nav-item icon-id="challenges">Nav Item</kwc-nav-item>
                 </div>
             </template>
         </demo-snippet>
@@ -100,7 +41,7 @@
         <demo-snippet>
             <template>
                 <div style="background: #394148;">
-                    <kwc-nav-item color-scheme="dark" label="Nav Item" active="true"></kwc-nav-item>
+                    <kwc-nav-item class="iron-selected">Nav Item</kwc-nav-item>
                 </div>
             </template>
         </demo-snippet>
@@ -109,43 +50,16 @@
         <demo-snippet>
             <template>
                 <div style="background: #394148;">
-                    <kwc-nav-item color-scheme="dark" label="Nav Item" icon-id="challenges" active="true"></kwc-nav-item>
+                    <kwc-nav-item icon-id="challenges" class="iron-selected">Nav Item</kwc-nav-item>
                 </div>
             </template>
         </demo-snippet>
 
-        <h3>Without icon, inactive and outline</h3>
+        <h3>Active with a custom class</h3>
         <demo-snippet>
             <template>
                 <div style="background: #394148;">
-                    <kwc-nav-item outline color-scheme="dark" label="Nav Item"></kwc-nav-item>
-                </div>
-            </template>
-        </demo-snippet>
-
-        <h3>With icon, inactive and outline</h3>
-        <demo-snippet>
-            <template>
-                <div style="background: #394148;">
-                    <kwc-nav-item outline color-scheme="dark" label="Nav Item" icon-id="challenges"></kwc-nav-item>
-                </div>
-            </template>
-        </demo-snippet>
-
-        <h3>Without icon, active and outline</h3>
-        <demo-snippet>
-            <template>
-                <div style="background: #394148;">
-                    <kwc-nav-item outline color-scheme="dark" label="Nav Item" active="true"></kwc-nav-item>
-                </div>
-            </template>
-        </demo-snippet>
-
-        <h3>With icon, active and outline</h3>
-        <demo-snippet>
-            <template>
-                <div style="background: #394148;">
-                    <kwc-nav-item outline color-scheme="dark" label="Nav Item" icon-id="challenges" active="true"></kwc-nav-item>
+                    <kwc-nav-item icon-id="challenges" class="custom-selected" selected-class="custom-selected">Nav Item</kwc-nav-item>
                 </div>
             </template>
         </demo-snippet>

@@ -39,110 +39,74 @@ Display a tab item in the `kwc-nav`
                 height: 16px;
                 margin-right: 8px;
             }
-
-            .nav-item.light.deselected {
+            .nav-item.deselected {
                 color: var(--color-grey);
             }
-            .nav-item.light.deselected:hover {
+            .nav-item.deselected:hover {
                 color: var(--color-stone);
             }
-            .nav-item.light.selected {
-                color: var(--color-black);
-            }
-            .nav-item.light.selected .icon {
-                color: var(--color-kano-orange);
-            }
-            .nav-item.light.outline {
-                border: solid 1px var(--color-grey);
-            }
-            .nav-item.light.outline.selected {
-                border: solid 1px var(--color-kano-orange);
-            }
-            .nav-item.dark.deselected {
-                color: var(--color-grey);
-            }
-            .nav-item.dark.deselected:hover {
-                color: var(--color-stone);
-            }
-            .nav-item.dark.selected {
+            .nav-item.selected {
                 color: var(--color-white);
             }
-            .nav-item.dark.selected .icon {
+            .nav-item.selected .icon {
                 color: var(--color-kano-orange);
             }
-            .nav-item.dark.outline {
-                border: solid 1px var(--color-grey);
-            }
-            .nav-item.dark.outline.selected {
-                border: solid 1px var(--color-kano-orange);
-            }
         </style>
-        <div class$="nav-item [[_activeClass]] [[_outlineClass]] [[_colorSchemeClass]]">
+        <div class$="nav-item [[_activeClass]]">
             <dom-if>
                 <template is="dom-if" if="[[_hasIcon]]">
                     <iron-icon class="icon" icon="kano-icons:[[iconId]]"></iron-icon>
                 </template>
             </dom-if>
-            [[label]]
+            <slot></slot>
         </div>
     </template>
     <script>
         Polymer({
             is: 'kwc-nav-item',
             properties: {
-                /** Text to be displayed by the navigation item */
-                label: {
+                /**
+                 * List of classes of host element. Without being a property
+                 * the element can't watch for changes and won't be able to
+                 * check if the `selectedClass` is contained.
+                 * @type {String}
+                 */
+                class: {
                     type: String,
-                    value: null
+                    reflectToAttribute: true
                 },
-                /** Icon id from `kano-icons` */
+                /**
+                 * CSS class name that the host should have to indicate wether
+                 * this component is selected or not.
+                 * @type {String}
+                 */
+                selectedClass: {
+                    type: String,
+                    value: 'iron-selected'
+                },
+                /**
+                 * Icon id from `kano-icons`
+                 * @type {String}
+                 */
                 iconId: {
                     type: String,
                     value: null
                 },
-                /** Flags if navigation item is active or not */
-                active: {
-                    type: Boolean,
-                    value: false
-                },
-                /** Flags if navigation item has an outline or not */
-                outline: {
-                    type: Boolean,
-                    value: false
-                },
                 /**
-                 * Defines what is the color shceme for this navigation icon.
-                 * The current options are:
-                 * - 'light': For light background, darker typography colors
-                 * - 'dark': For dark background, ligher typography colors
+                 * Flags if navigation has icon or not
+                 * @type {Boolean}
                  */
-                colorScheme: {
-                    type: String,
-                    value: 'light'
-                },
-                /** Flags if navigation has icon or not */
                 _hasIcon: {
                     type: Boolean,
                     computed: '_computeHasIcon(iconId)'
                 },
                 /**
-                 * Class to be appended on navigation item if it has an outline
+                 * Class to be appended on navigation item if it's active
+                 * @type {String}
                  */
-                _outlineClass: {
-                    type: String,
-                    computed: '_computeOutlineClass(outline)'
-                },
-                /**
-                 * Class to be appended on navigation item to apply color scheme
-                 */
-                _colorSchemeClass: {
-                    type: String,
-                    computed: '_computeColorSchemeClass(colorScheme)'
-                },
-                /** Class to be appended on navigation item if it's active */
                 _activeClass: {
                     type: String,
-                    computed: '_computeActiveClass(active)'
+                    computed: '_computeActiveClass(class)'
                 }
             },
             /**
@@ -159,32 +123,11 @@ Display a tab item in the `kwc-nav`
              * @return {String} Class to be used if navigation icon is selected
              *     or not.
              */
-            _computeActiveClass (active) {
-                return active === true ? 'selected' : 'deselected';
-            },
-            /**
-             * Computes class to add an outline to navigation item.
-             * @param {String} outline Wether has outline or not or not.
-             * @return {String} Class to be used if navigation icon is outlined
-             *     or not.
-             */
-            _computeOutlineClass (outline) {
-                return outline === true ? 'outline' : '';
-            },
-            /**
-             * Computes class to apply color scheme.
-             * @param {String} colorScheme What color scheme to apply.
-             * @return {String} Class to be used to set color scheme.
-             */
-            _computeColorSchemeClass (colorScheme) {
-                let scheme = 'light';
-                switch (colorScheme) {
-                    case 'dark':
-                        scheme = 'dark';
-                        break;
-                    default:
-                }
-                return scheme;
+            _computeActiveClass () {
+                let isSelected = this.classList.contains(
+                    this.selectedClass
+                );
+                return isSelected === true ? 'selected' : 'deselected';
             }
         });
     </script>
