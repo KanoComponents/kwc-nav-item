@@ -7,7 +7,6 @@
 `kwc-nav-item`
 Display a tab item in the `kwc-nav`
 
-@hero demo/hero.png
 @demo demo/index.html
 -->
 
@@ -15,55 +14,76 @@ Display a tab item in the `kwc-nav`
     <template>
         <style>
             :host {
-                display: block;
+                display: inline-block;
             }
-            :host .nav-item {
+            .nav-item {
+                @apply --font-body;
                 margin: 0 16px;
-                padding: 16px 8px;
+                padding: 8px 16px;
                 position: relative;
-            }
-            :host .nav-item button:focus {
-                outline: 0;
-            }
-            :host .nav-item button {
                 font-family: var(--font-body);
+                font-size: 14px;
+                font-weight: bold;
                 text-transform: uppercase;
                 white-space: nowrap;
                 border: 0;
+                border-radius: 4px;
                 cursor: pointer;
                 background: transparent;
-                @apply --font-body;
-                font-size: 14px;
-                font-weight: bold;
-                padding: 0;
             }
-            :host .nav-item button iron-icon {
+            .nav-item:focus {
+                outline: 0;
+            }
+            .nav-item .icon {
                 width: 16px;
                 height: 16px;
                 margin-right: 8px;
             }
-            :host .nav-item.deselected button {
+
+            .nav-item.light.deselected {
                 color: var(--color-grey);
             }
-            :host .nav-item.deselected button:hover {
+            .nav-item.light.deselected:hover {
                 color: var(--color-stone);
             }
-            :host .nav-item.selected button {
-                color: #ffffff;
+            .nav-item.light.selected {
+                color: var(--color-black);
             }
-            :host .nav-item.selected button iron-icon {
+            .nav-item.light.selected .icon {
                 color: var(--color-kano-orange);
             }
+            .nav-item.light.outline {
+                border: solid 1px var(--color-grey);
+            }
+            .nav-item.light.outline.selected {
+                border: solid 1px var(--color-kano-orange);
+            }
+            .nav-item.dark.deselected {
+                color: var(--color-grey);
+            }
+            .nav-item.dark.deselected:hover {
+                color: var(--color-stone);
+            }
+            .nav-item.dark.selected {
+                color: var(--color-white);
+            }
+            .nav-item.dark.selected .icon {
+                color: var(--color-kano-orange);
+            }
+            .nav-item.dark.outline {
+                border: solid 1px var(--color-grey);
+            }
+            .nav-item.dark.outline.selected {
+                border: solid 1px var(--color-kano-orange);
+            }
         </style>
-        <div class$="nav-item [[_activeClass]]">
-            <button type="button">
-                <dom-if>
-                    <template is="dom-if" if="[[_hasIcon]]">
-                        <iron-icon class="icon" icon="kano-icons:[[iconId]]"></iron-icon>
-                    </template>
-                </dom-if>
-                [[label]]
-            </button>
+        <div class$="nav-item [[_activeClass]] [[_outlineClass]] [[_colorSchemeClass]]">
+            <dom-if>
+                <template is="dom-if" if="[[_hasIcon]]">
+                    <iron-icon class="icon" icon="kano-icons:[[iconId]]"></iron-icon>
+                </template>
+            </dom-if>
+            [[label]]
         </div>
     </template>
     <script>
@@ -85,10 +105,39 @@ Display a tab item in the `kwc-nav`
                     type: Boolean,
                     value: false
                 },
+                /** Flags if navigation item has an outline or not */
+                outline: {
+                    type: Boolean,
+                    value: false
+                },
+                /**
+                 * Defines what is the color shceme for this navigation icon.
+                 * The current options are:
+                 * - 'light': For light background, darker typography colors
+                 * - 'dark': For dark background, ligher typography colors
+                 */
+                colorScheme: {
+                    type: String,
+                    value: 'light'
+                },
                 /** Flags if navigation has icon or not */
                 _hasIcon: {
                     type: Boolean,
                     computed: '_computeHasIcon(iconId)'
+                },
+                /**
+                 * Class to be appended on navigation item if it has an outline
+                 */
+                _outlineClass: {
+                    type: String,
+                    computed: '_computeOutlineClass(outline)'
+                },
+                /**
+                 * Class to be appended on navigation item to apply color scheme
+                 */
+                _colorSchemeClass: {
+                    type: String,
+                    computed: '_computeColorSchemeClass(colorScheme)'
                 },
                 /** Class to be appended on navigation item if it's active */
                 _activeClass: {
@@ -97,18 +146,45 @@ Display a tab item in the `kwc-nav`
                 }
             },
             /**
-            * Computes if navigation item has an icon or not.
-            * @param {String} iconId Icon id from `kano-icons`.
-            */
+             * Computes if navigation item has an icon or not.
+             * @param {String} iconId Icon id from `kano-icons`.
+             * @return {Boolean} Flag if navigation icon has icon or not.
+             */
             _computeHasIcon (iconId) {
                 return iconId ? true : false;
             },
             /**
-            * Computes class to use if navigation item is active or not.
-            * @param {String} active Wether navigation is active or not.
-            */
+             * Computes class to use if navigation item is active or not.
+             * @param {String} active Wether navigation is active or not.
+             * @return {String} Class to be used if navigation icon is selected
+             *     or not.
+             */
             _computeActiveClass (active) {
                 return active === true ? 'selected' : 'deselected';
+            },
+            /**
+             * Computes class to add an outline to navigation item.
+             * @param {String} outline Wether has outline or not or not.
+             * @return {String} Class to be used if navigation icon is outlined
+             *     or not.
+             */
+            _computeOutlineClass (outline) {
+                return outline === true ? 'outline' : '';
+            },
+            /**
+             * Computes class to apply color scheme.
+             * @param {String} colorScheme What color scheme to apply.
+             * @return {String} Class to be used to set color scheme.
+             */
+            _computeColorSchemeClass (colorScheme) {
+                let scheme = 'light';
+                switch (colorScheme) {
+                    case 'dark':
+                        scheme = 'dark';
+                        break;
+                    default:
+                }
+                return scheme;
             }
         });
     </script>
