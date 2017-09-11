@@ -16,6 +16,20 @@ Display a tab item in the `kwc-nav`
             :host {
                 display: inline-block;
             }
+            .nav-item ::slotted(*) {
+                text-decoration: inherit;
+                font-family: inherit;
+                font-size: inherit;
+                color: inherit;
+                background: inherit;
+                border: inherit;
+                outline: inherit;
+                text-transform: inherit;
+                font-weight: inherit;
+                margin: 0;
+                padding: 0;
+                cursor: pointer;
+            }
             .nav-item {
                 @apply --font-body;
                 margin: 0 16px;
