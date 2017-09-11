@@ -19,26 +19,27 @@
     </test-fixture>
     <test-fixture id="default">
         <template>
-            <kwc-nav-item label="Nav Item"></kwc-nav-item>
+            <kwc-nav-item>[[label]]</kwc-nav-item>
         </template>
     </test-fixture>
     <test-fixture id="icon">
         <template>
-            <kwc-nav-item label="Nav Item" icon-id="challenges"></kwc-nav-item>
+            <kwc-nav-item icon-id="challenges">Nav Item</kwc-nav-item>
         </template>
     </test-fixture>
     <test-fixture id="active">
         <template>
-            <kwc-nav-item label="Nav Item" active="true"></kwc-nav-item>
+            <kwc-nav-item class="iron-selected">Nav Item</kwc-nav-item>
         </template>
     </test-fixture>
     <test-fixture id="icon-and-active">
         <template>
-            <kwc-nav-item label="Nav Item" icon-id="challenges" active="true"></kwc-nav-item>
+            <kwc-nav-item class="iron-selected" icon-id="challenges">Nav Item</kwc-nav-item>
         </template>
     </test-fixture>
 
     <script>
+        var defaultLabel = 'Nav Item';
         suite('empty', () => {
             let element;
             setup(function () {
@@ -47,11 +48,7 @@
             test('instantiating the element works', () => {
                 assert.equal(element.is, 'kwc-nav-item');
             });
-            test('labeled correctly', () => {
-                assert.equal(element.label, null);
-            });
             test('not active by default', () => {
-                assert.equal(element.active, false);
                 assert.equal(element._activeClass, 'deselected');
                 let navItem = Polymer.dom(element.root).querySelector('.nav-item');
                 assert.exists(navItem);
@@ -76,11 +73,7 @@
             test('instantiating the element works', () => {
                 assert.equal(element.is, 'kwc-nav-item');
             });
-            test('labeled correctly', () => {
-                assert.equal(element.label, 'Nav Item');
-            });
             test('not active by default', () => {
-                assert.equal(element.active, false);
                 assert.equal(element._activeClass, 'deselected');
                 let navItem = Polymer.dom(element.root).querySelector('.nav-item');
                 assert.exists(navItem);
@@ -105,11 +98,7 @@
             test('instantiating the element works', () => {
                 assert.equal(element.is, 'kwc-nav-item');
             });
-            test('labeled correctly', () => {
-                assert.equal(element.label, 'Nav Item');
-            });
             test('not active by default', () => {
-                assert.equal(element.active, false);
                 assert.equal(element._activeClass, 'deselected');
                 let navItem = Polymer.dom(element.root).querySelector('.nav-item');
                 assert.exists(navItem);
@@ -134,11 +123,7 @@
             test('instantiating the element works', () => {
                 assert.equal(element.is, 'kwc-nav-item');
             });
-            test('labeled correctly', () => {
-                assert.equal(element.label, 'Nav Item');
-            });
             test('active item', () => {
-                assert.equal(element.active, true);
                 assert.equal(element._activeClass, 'selected');
                 let navItem = Polymer.dom(element.root).querySelector('.nav-item');
                 assert.exists(navItem);
@@ -163,11 +148,8 @@
             test('instantiating the element works', () => {
                 assert.equal(element.is, 'kwc-nav-item');
             });
-            test('labeled correctly', () => {
-                assert.equal(element.label, 'Nav Item');
-            });
             test('active item', () => {
-                assert.equal(element.active, true);
+                // assert.equal(element.active, true);
                 assert.equal(element._activeClass, 'selected');
                 let navItem = Polymer.dom(element.root).querySelector('.nav-item');
                 assert.exists(navItem);
