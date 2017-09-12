@@ -21,6 +21,8 @@ Display an outline button item in the `kwc-nav`
                  */
                 min-width: 1px;
             }
+
+            /* SLOTTED CONTENT */
             .nav-item ::slotted(*) {
                 text-decoration: inherit;
                 font-family: inherit;
@@ -35,6 +37,8 @@ Display an outline button item in the `kwc-nav`
                 padding: 0;
                 cursor: pointer;
             }
+
+            /* DEFAULT STYLING*/
             .nav-item {
                 @apply --font-body;
                 margin: 0 16px;
@@ -62,20 +66,24 @@ Display an outline button item in the `kwc-nav`
                 height: 16px;
                 margin-right: 8px;
             }
-            .nav-item.deselected {
+
+            /* DESELECTED COLORS*/
+            .nav-item {
                 color: var(--color-grey);
             }
-            .nav-item.deselected:hover {
+            .nav-item:hover {
                 color: var(--color-stone);
             }
-            .nav-item.selected {
+
+            /* SELECTED COLORS*/
+            :host(.iron-selected) .nav-item {
                 color: var(--color-black);
             }
-            .nav-item.selected .icon {
+            :host(.iron-selected) .nav-item .icon {
                 color: var(--color-kano-orange);
             }
         </style>
-        <div class$="nav-item outline [[_activeClass]]">
+        <div class="nav-item outline">
             <dom-if>
                 <template is="dom-if" if="[[_hasIcon]]">
                     <iron-icon class="icon" icon="kano-icons:[[iconId]]"></iron-icon>
@@ -89,18 +97,9 @@ Display an outline button item in the `kwc-nav`
             is: 'kwc-nav-button',
             properties: {
                 /**
-                 * List of classes of host element. Without being a property
-                 * the element can't watch for changes and won't be able to
-                 * check if the `selectedClass` is contained.
-                 * @type {String}
-                 */
-                class: {
-                    type: String,
-                    reflectToAttribute: true
-                },
-                /**
-                 * CSS class name that the host should have to indicate wether
-                 * this component is selected or not.
+                 * CSS class name that the host should have to indicate whether
+                 * this component is selected or not. If this changes the
+                 * active state **styling won't work**.
                  * @type {String}
                  */
                 selectedClass: {
@@ -122,14 +121,6 @@ Display an outline button item in the `kwc-nav`
                 _hasIcon: {
                     type: Boolean,
                     computed: '_computeHasIcon(iconId)'
-                },
-                /**
-                 * Class to be appended on navigation item if it's active
-                 * @type {String}
-                 */
-                _activeClass: {
-                    type: String,
-                    computed: '_computeActiveClass(class)'
                 }
             },
             /**
@@ -139,18 +130,6 @@ Display an outline button item in the `kwc-nav`
              */
             _computeHasIcon (iconId) {
                 return iconId ? true : false;
-            },
-            /**
-             * Computes class to use if navigation item is active or not.
-             * @param {String} active Wether navigation is active or not.
-             * @return {String} Class to be used if navigation icon is selected
-             *     or not.
-             */
-            _computeActiveClass () {
-                let isSelected = this.classList.contains(
-                    this.selectedClass
-                );
-                return isSelected === true ? 'selected' : 'deselected';
             }
         });
     </script>
