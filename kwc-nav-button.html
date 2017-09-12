@@ -15,6 +15,11 @@ Display an outline button item in the `kwc-nav`
         <style>
             :host {
                 display: inline-block;
+                /**
+                 * This makes sure that it has a width before the slotted
+                 * content is loaded when there is no icon.
+                 */
+                min-width: 1px;
             }
             .nav-item ::slotted(*) {
                 text-decoration: inherit;
