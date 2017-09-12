@@ -4,13 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-    <title>kwc-nav-item demo</title>
+    <title>kwc-nav-button demo</title>
 
     <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
 
     <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
     <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
-    <link rel="import" href="../kwc-nav-item.html">
+    <link rel="import" href="../kwc-nav-button.html">
     <custom-style>
         <style is="custom-style" include="demo-pages-shared-styles"></style>
     </custom-style>
@@ -22,67 +22,53 @@
         <h3>Without icon and inactive</h3>
         <demo-snippet>
             <template>
-                <div style="background: #394148;">
-                    <kwc-nav-item>Nav Item</kwc-nav-item>
-                </div>
+                <kwc-nav-button>Nav Item</kwc-nav-button>
             </template>
         </demo-snippet>
 
         <h3>With icon and inactive</h3>
         <demo-snippet>
             <template>
-                <div style="background: #394148;">
-                    <kwc-nav-item icon-id="challenges">Nav Item</kwc-nav-item>
-                </div>
+                <kwc-nav-button icon-id="challenges">Nav Item</kwc-nav-button>
             </template>
         </demo-snippet>
 
         <h3>Without icon and active</h3>
         <demo-snippet>
             <template>
-                <div style="background: #394148;">
-                    <kwc-nav-item class="iron-selected">Nav Item</kwc-nav-item>
-                </div>
+                <kwc-nav-button class="iron-selected">Nav Item</kwc-nav-button>
             </template>
         </demo-snippet>
 
         <h3>With icon and active</h3>
         <demo-snippet>
             <template>
-                <div style="background: #394148;">
-                    <kwc-nav-item icon-id="challenges" class="iron-selected">Nav Item</kwc-nav-item>
-                </div>
+                <kwc-nav-button icon-id="challenges" class="iron-selected">Nav Item</kwc-nav-button>
             </template>
         </demo-snippet>
 
         <h3>Active with a custom class</h3>
         <demo-snippet>
             <template>
-                <div style="background: #394148;">
-                    <kwc-nav-item icon-id="challenges" class="custom-selected" selected-class="custom-selected">Nav Item</kwc-nav-item>
-                </div>
+                <kwc-nav-button icon-id="challenges" class="custom-selected" selected-class="custom-selected">Nav Item</kwc-nav-button>
             </template>
         </demo-snippet>
 
         <h3>With a link inside</h3>
         <demo-snippet>
             <template>
-                <div style="background: #394148;">
-                    <kwc-nav-item icon-id="challenges">
-                        <a href="#">Nav Item</a>
-                    </kwc-nav-item>
-                </div>
+                <kwc-nav-button icon-id="challenges">
+                    <a href="#">Nav Item</a>
+                </kwc-nav-button>
             </template>
         </demo-snippet>
 
         <h3>With a button inside</h3>
         <demo-snippet>
             <template>
-                <div style="background: #394148;">
-                    <kwc-nav-item icon-id="challenges">
-                        <button>Nav Item</button>
-                    </kwc-nav-item>
-                </div>
+                <kwc-nav-button icon-id="challenges">
+                    <button>Nav Item</button>
+                </kwc-nav-button>
             </template>
         </demo-snippet>
 
