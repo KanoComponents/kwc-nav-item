@@ -5,12 +5,12 @@
 
 <!--
 `kwc-nav-item`
-Display a tab item in the `kwc-nav`
+Display an outline button item in the `kwc-nav`
 
-@demo demo/index-item.html
+@demo demo/index-button.html
 -->
 
-<dom-module id="kwc-nav-item">
+<dom-module id="kwc-nav-button">
     <template>
         <style>
             :host {
@@ -45,6 +45,10 @@ Display a tab item in the `kwc-nav`
                 cursor: pointer;
                 background: transparent;
             }
+            .outline {
+                border: 1px solid var(--color-grey);
+                border-radius: 4px;
+            }
             .nav-item:focus {
                 outline: 0;
             }
@@ -60,13 +64,13 @@ Display a tab item in the `kwc-nav`
                 color: var(--color-stone);
             }
             .nav-item.selected {
-                color: var(--color-white);
+                color: var(--color-black);
             }
             .nav-item.selected .icon {
                 color: var(--color-kano-orange);
             }
         </style>
-        <div class$="nav-item [[_activeClass]]">
+        <div class$="nav-item outline [[_activeClass]]">
             <dom-if>
                 <template is="dom-if" if="[[_hasIcon]]">
                     <iron-icon class="icon" icon="kano-icons:[[iconId]]"></iron-icon>
@@ -77,7 +81,7 @@ Display a tab item in the `kwc-nav`
     </template>
     <script>
         Polymer({
-            is: 'kwc-nav-item',
+            is: 'kwc-nav-button',
             properties: {
                 /**
                  * List of classes of host element. Without being a property
@@ -90,7 +94,7 @@ Display a tab item in the `kwc-nav`
                     reflectToAttribute: true
                 },
                 /**
-                 * CSS class name that the host should have to indicate whether
+                 * CSS class name that the host should have to indicate wether
                  * this component is selected or not.
                  * @type {String}
                  */
@@ -133,7 +137,7 @@ Display a tab item in the `kwc-nav`
             },
             /**
              * Computes class to use if navigation item is active or not.
-             * @param {String} active Whether navigation is active or not.
+             * @param {String} active Wether navigation is active or not.
              * @return {String} Class to be used if navigation icon is selected
              *     or not.
              */
