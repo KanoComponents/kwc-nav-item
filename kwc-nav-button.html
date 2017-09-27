@@ -84,11 +84,9 @@ Display an outline button item in the `kwc-nav`
             }
         </style>
         <div class="nav-item outline" on-tap="_navigate">
-            <dom-if>
-                <template is="dom-if" if="[[_hasIcon]]">
-                    <iron-icon class="icon" icon="kano-icons:[[iconId]]"></iron-icon>
-                </template>
-            </dom-if>
+            <template is="dom-if" if="[[_hasIcon]]">
+                <iron-icon class="icon" icon="kano-icons:[[iconId]]"></iron-icon>
+            </template>
             <slot></slot>
         </div>
     </template>
