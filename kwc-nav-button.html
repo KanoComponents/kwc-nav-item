@@ -150,9 +150,22 @@ Display an outline button item in the `kwc-nav`
             _computeHasIcon (iconId) {
                 return iconId ? true : false;
             },
+            /**
+             * Fired to simulate navigation event (link click) when navigation
+             * item is clicked.
+             *
+             * @event location-changed
+             */
+            /**
+             * Handles click on the navigation item and simulate a link click
+             * by pushing new state to history and firing `location-changed`
+             * event
+             * @param {Event} e Event object from tap event
+             */
             _navigate (e) {
                 if (this.href) {
-                    window.open(this.href, this.target);
+                    window.history.pushState({}, null, this.href);
+                    window.dispatchEvent(new CustomEvent('location-changed'));
                 }
             }
         });
