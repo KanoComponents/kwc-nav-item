@@ -21,7 +21,6 @@ Display an outline button item in the `kwc-nav`
                  */
                 min-width: 1px;
             }
-
             /* SLOTTED CONTENT */
             .nav-item ::slotted(*) {
                 text-decoration: inherit;
@@ -41,8 +40,8 @@ Display an outline button item in the `kwc-nav`
             /* DEFAULT STYLING*/
             .nav-item {
                 @apply --font-body;
-                margin: 0 16px;
-                padding: 8px 16px;
+                margin: 0;
+                padding: 8px 30px;
                 position: relative;
                 font-family: var(--font-body);
                 font-size: 14px;
@@ -72,7 +71,7 @@ Display an outline button item in the `kwc-nav`
                 color: var(--color-grey);
             }
             .nav-item:hover {
-                color: var(--color-stone);
+                color: var(--color-black);
             }
 
             /* SELECTED COLORS*/
