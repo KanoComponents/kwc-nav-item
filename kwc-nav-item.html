@@ -7,6 +7,14 @@
 `kwc-nav-item`
 Display a tab item in the `kwc-nav`
 
+Custom property | Description | Default
+----------------|-------------|----------
+`--kwc-nav-item-font-size` | Font size | `14px`
+`--kwc-nav-item-color` | Default color | `--color-grey`
+`--kwc-nav-item-color-hover` | Hovering color | `--color-stone`
+`--kwc-nav-item-color-active` | Active item color | `--color-white`
+`--kwc-nav-item-color-icon-active` | Active icon color | `--color-kano-orange`
+
 @demo demo/index-item.html
 -->
 
@@ -64,18 +72,18 @@ Display a tab item in the `kwc-nav`
 
             /*DESELECTED*/
             .nav-item {
-                color: var(--color-grey);
+                color: var(--kwc-nav-item-color, var(--color-grey));
             }
             .nav-item:hover {
-                color: var(--color-stone);
+                color: var(--kwc-nav-item-color-hover, var(--color-stone));
             }
 
             /*SELECTED*/
             :host(.iron-selected) .nav-item {
-                color: var(--color-white);
+                color: var(--kwc-nav-item-color-active, var(--color-white));
             }
             :host(.iron-selected) .nav-item .icon {
-                color: var(--color-kano-orange);
+                color: var(--kwc-nav-item-color-icon-active, var(--color-kano-orange));
             }
 
         </style>
