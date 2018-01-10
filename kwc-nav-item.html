@@ -46,6 +46,10 @@ Custom property | Description | Default
                 cursor: pointer;
             }
 
+            .nav-item iron-icon ~ ::slotted(*) {
+                margin-left: 16px;
+            }
+
             /* DEFAULT STYLING*/
             .nav-item {
                 @apply --font-body;
@@ -67,7 +71,6 @@ Custom property | Description | Default
             .nav-item .icon {
                 width: 16px;
                 height: 16px;
-                margin-right: 8px;
             }
 
             /*DESELECTED*/
